@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TITLE</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <style>
+        img {
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<!-- MAIN -->
+    <main>
+
+    </main>
+    <script>
+        let link = 'https://picsum.photos/v2/list'
+        fetch(link)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(i => {
+                    let fig = document.createElement('figure')
+                    let figCap = document.createElement('figcaption')
+                    let img = document.createElement('img')
+                    let src = i.download_url
+                    let author = i.author
+                    img.setAttribute('src', src)
+                    figCap.innerText = author
+                    fig.appendChild(img)
+                    fig.appendChild(figCap)
+                    document.body.appendChild(fig)
+
+                })
+            })
+            .catch(err => console.error(err));
+    </script>
+</body>
+</html>
